@@ -1,6 +1,6 @@
 # GlassPost: Instagram Scheduler
 
-A production-oriented Instagram scheduler: one Node.js server file plus plain HTML, CSS and JavaScript, styled with the Glassy UI stylesheet (MIT). It publishes photos and Reels through the official Instagram API (Instagram Login) at the time you choose.
+A production-oriented Instagram scheduler: one Node.js server file plus plain HTML, CSS and JavaScript, styled with the Glassy UI stylesheet and WebGL glass renderer (MIT). It publishes photos and Reels through the official Instagram API (Instagram Login) at the time you choose.
 
 ## 1. Architecture
 
@@ -23,6 +23,7 @@ Publishing flow per post: create media container, check its status, publish, sto
 | `index.html`, `dashboard.html` | Landing page and scheduler dashboard |
 | `privacy.html`, `terms.html`, `data-deletion.html` | Pages Meta requires |
 | `site.js`, `app.js` | Shared UI script and page logic |
+| `glassy-scene.js` | The real Glassy UI WebGL glass renderer (MIT), merged into one framework-free file |
 | `glass.css`, `site.css` | Glassy UI stylesheet and site tokens |
 | `vermilion-*.svg` | Wallpapers |
 | `package.json`, `Dockerfile`, `.env.example` | Runtime and deployment |
@@ -129,7 +130,7 @@ curl -i -H "Authorization: Bearer $CRON_SECRET" https://app.yourdomain.com/api/c
 - Free-tier terms (credit card requirements, allowances) have changed during 2026. Confirm the current terms on Koyeb's pricing page.
 - Instagram supports **JPEG** images only. Reels use MP4 or MOV.
 - Meta limits API publishing per account in a rolling 24 hours. The app enforces a conservative limit of 50.
-- The Glassy UI WebGL scene is not used here (it needs React). The glass look comes from its CSS, with a CSS 3D phone on the landing page.
+- The glass refraction uses WebGL2. Browsers without it, and users who enable reduced transparency, automatically get the CSS glass instead.
 - Not included in this version: carousels, Stories, first-comment automation, and teams. The data model allows adding them.
 
 ## 9. Local development

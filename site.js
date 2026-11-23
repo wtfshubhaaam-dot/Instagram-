@@ -29,7 +29,8 @@
       '<nav class="gp-nav" aria-label="Primary"><a href="/#features">Features</a><a href="/privacy">Privacy</a><a href="/terms">Terms</a></nav>' +
       '<button class="gp-toggle" type="button" aria-label="Toggle light and dark theme">◐</button>' +
       button(signedIn ? '/dashboard' : '/api/auth/instagram', signedIn ? 'Open dashboard' : 'Connect Instagram', 'prominent', 'sm');
-    document.body.prepend(header);
+    var scene = document.getElementById('scene') || document.body;
+    scene.prepend(header);
 
     header.querySelector('.gp-toggle').addEventListener('click', function () {
       var next = root.getAttribute('data-lg-theme') === 'dark' ? 'light' : 'dark';
@@ -43,7 +44,27 @@
     footer.style.cssText = 'padding:48px 0 64px;font-size:14px;display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between';
     footer.innerHTML = '<span>© ' + new Date().getFullYear() + ' GlassPost. Not affiliated with or endorsed by Instagram or Meta.</span>' +
       '<nav aria-label="Legal" style="display:flex;gap:18px"><a href="/privacy">Privacy policy</a><a href="/terms">Terms of service</a><a href="/data-deletion">Data deletion</a></nav>';
-    document.body.append(footer);
+    scene.append(footer);
+
+    // Glassy UI WebGL scene: the real renderer, refracting the wallpaper through every glass element.
+    if (scene.id === 'scene') {
+      import('/glassy-scene.js').then(function (m) {
+        m.createGlassScene(scene, { backdrop: 'var(--site-wallpaper)', backdropSpace: 'viewport', flow: scene.dataset.flow === 'true' });
+      }).catch(function (e) { console.warn('Glass scene unavailable, keeping CSS glass.', e); });
+    }
+
+    // Press feedback for glass buttons (the scene reads --lg-press).
+    document.addEventListener('pointerdown', function (e) {
+      var b = e.target.closest && e.target.closest('.lg-button');
+      if (b) { b.style.setProperty('--lg-press', '1'); b.dataset.pressed = 'true'; }
+    });
+    ['pointerup', 'pointercancel', 'pointerleave'].forEach(function (t) {
+      document.addEventListener(t, function () {
+        document.querySelectorAll('.lg-button[data-pressed="true"]').forEach(function (b) {
+          b.style.setProperty('--lg-press', '0'); b.dataset.pressed = 'false';
+        });
+      }, true);
+    });
 
     // Landing page: sign-in error message.
     var error = new URLSearchParams(location.search).get('error');

@@ -290,4 +290,5 @@ main :focus {
 .gp-legal h2 { margin: 28px 0 8px; font-size: 20px; }
 .gp-legal a { color: var(--site-link); }
 .gp-toggle { width: 38px; height: 38px; border-radius: 50%; border: 0; cursor: pointer; background: var(--site-fill); color: inherit; font-size: 16px; }
-body { background: var(--site-bg) var(--site-wallpaper) center / cover fixed no-repeat; }
+body { background: var(--site-bg); }
+#scene { position: relative; min-height: 100svh; }

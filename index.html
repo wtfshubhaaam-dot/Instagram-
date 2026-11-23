@@ -6,6 +6,7 @@
 <meta name="description" content="Plan, schedule and automatically publish Instagram photos and Reels from one calm, glass-clear dashboard.">
 </head>
 <body class="antialiased">
+<div id="scene" data-flow="true">
 <main id="main-content" class="gp-stage">
   <section class="gp-container gp-hero gp-grid" style="align-items:center;padding-top:130px">
     <div style="max-width:560px">
@@ -17,8 +18,8 @@
       </div>
     </div>
     <div id="phone-stage" class="gp-3d" style="display:grid;place-items:center;min-height:560px;padding:24px;position:relative">
-      <span class="gp-drop lg-glass-surface lg-panel--pill" data-lg-preset="control" style="top:6%;right:4%;width:130px;height:130px"></span>
-      <span class="gp-drop lg-glass-surface lg-panel--pill" data-lg-preset="control" style="bottom:4%;left:2%;width:84px;height:84px;animation-delay:2s"></span>
+      <span class="gp-drop lg-scene-drop" style="top:6%;right:4%;width:130px;height:130px"></span>
+      <span class="gp-drop lg-scene-drop" style="bottom:4%;left:2%;width:84px;height:84px;animation-delay:2s"></span>
       <div id="phone" class="gp-phone" aria-hidden="true">
         <div class="gp-phone-body"><div class="gp-phone-screen">
           <div style="display:flex;align-items:center;gap:8px;padding:34px 14px 10px"><span id="ig-mini"></span><strong style="font-size:14px">Instagram</strong></div>
@@ -40,6 +41,7 @@
     </div>
   </section>
 </main>
+</div>
 <script src="/app.js" defer></script>
 </body>
 </html>

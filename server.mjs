@@ -366,6 +366,7 @@ const FILES = {
   '/site.css': ['site.css', 'text/css; charset=utf-8'],
   '/site.js': ['site.js', 'text/javascript; charset=utf-8'],
   '/app.js': ['app.js', 'text/javascript; charset=utf-8'],
+  '/glassy-scene.js': ['glassy-scene.js', 'text/javascript; charset=utf-8'],
   '/vermilion-light.svg': ['vermilion-light.svg', 'image/svg+xml'],
   '/vermilion-dark.svg': ['vermilion-dark.svg', 'image/svg+xml'],
 };
