@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" data-lg-theme="light" data-lg-mode="clear">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27%3E%3Crect width=%2724%27 height=%2724%27 rx=%276%27 fill=%27%23d62976%27/%3E%3C/svg%3E"><link rel="stylesheet" href="/glass.css"><link rel="stylesheet" href="/site.css"><script src="/site.js"></script>
+<title>GlassPost: Instagram scheduler</title>
+<meta name="description" content="Plan, schedule and automatically publish Instagram photos and Reels from one calm, glass-clear dashboard.">
+</head>
+<body class="antialiased">
+<main id="main-content" class="gp-stage">
+  <section class="gp-container gp-hero gp-grid" style="align-items:center;padding-top:130px">
+    <div style="max-width:560px">
+      <div class="lg-glass-surface lg-panel--card" data-lg-preset="standard" data-lg-refraction="none" style="padding:28px">
+        <h1 class="gp-display" style="font-size:clamp(38px,6vw,60px);margin:0">Plan Instagram once. Publish on time, every time.</h1>
+        <p class="gp-muted" style="font-size:19px;margin:16px 0 24px">Schedule photos and Reels from a calm, glass-clear dashboard. Connect a Professional account and GlassPost does the posting.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap" id="cta"></div>
+        <p id="error" role="alert" hidden style="color:var(--lg-invalid);margin-bottom:0"></p>
+      </div>
+    </div>
+    <div id="phone-stage" class="gp-3d" style="display:grid;place-items:center;min-height:560px;padding:24px;position:relative">
+      <span class="gp-drop lg-glass-surface lg-panel--pill" data-lg-preset="control" style="top:6%;right:4%;width:130px;height:130px"></span>
+      <span class="gp-drop lg-glass-surface lg-panel--pill" data-lg-preset="control" style="bottom:4%;left:2%;width:84px;height:84px;animation-delay:2s"></span>
+      <div id="phone" class="gp-phone" aria-hidden="true">
+        <div class="gp-phone-body"><div class="gp-phone-screen">
+          <div style="display:flex;align-items:center;gap:8px;padding:34px 14px 10px"><span id="ig-mini"></span><strong style="font-size:14px">Instagram</strong></div>
+          <div style="display:flex;align-items:center;gap:8px;padding:6px 14px"><span style="width:28px;height:28px;border-radius:99px;background:linear-gradient(135deg,#feda75,#d62976,#4f5bd5)"></span><strong>studio.north</strong></div>
+          <div style="aspect-ratio:1;margin:4px 0;background:linear-gradient(160deg,#ffbd91,#ff754c 40%,#f04a28 70%,#c9361a)"></div>
+          <div style="padding:8px 14px;line-height:1.4"><strong>studio.north</strong> Autumn collection, live at 9:00. Scheduled with GlassPost.</div>
+        </div></div>
+        <div class="gp-chip lg-glass-surface lg-panel--pill" data-lg-preset="control" style="top:70px;left:-70px;padding:10px 16px;--z:90px"><span style="font-size:13px;font-weight:600">Mon 9:00 AM</span></div>
+        <div class="gp-chip lg-glass-surface lg-panel--card" data-lg-preset="standard" style="bottom:90px;right:-80px;padding:12px 16px;--z:120px;--d:1.2s"><span class="lg-badge" data-tone="green">Published</span><div style="font-size:13px;margin-top:6px">Reel went live on time</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="gp-container" style="padding:80px 0 24px">
+    <div class="gp-grid gp-features">
+      <div class="lg-glass-surface lg-panel--card" data-lg-preset="standard" style="padding:24px"><h2 style="margin:0;font-size:21px;letter-spacing:-.02em">Schedule photos and Reels</h2><p class="gp-muted" style="margin-bottom:0">Upload once, pick a time, and GlassPost publishes automatically through the official Instagram API.</p></div>
+      <div class="lg-glass-surface lg-panel--card" data-lg-preset="standard" style="padding:24px"><h2 style="margin:0;font-size:21px;letter-spacing:-.02em">Reliable by design</h2><p class="gp-muted" style="margin-bottom:0">Every post is claimed once, retried on temporary errors, and shows a clear status if something needs attention.</p></div>
+      <div class="lg-glass-surface lg-panel--card" data-lg-preset="standard" style="padding:24px"><h2 style="margin:0;font-size:21px;letter-spacing:-.02em">Your account stays yours</h2><p class="gp-muted" style="margin-bottom:0">Access tokens are encrypted at rest, and you can disconnect or delete your data at any time.</p></div>
+    </div>
+  </section>
+</main>
+<script src="/app.js" defer></script>
+</body>
+</html>

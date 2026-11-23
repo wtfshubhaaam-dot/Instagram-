@@ -1,0 +1,293 @@
+
+
+:root {
+  color-scheme: dark;
+
+  --site-font:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', 'Segoe UI', Roboto, Inter,
+    system-ui, sans-serif;
+  --site-font-display:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', 'Segoe UI', Roboto,
+    Inter, system-ui, sans-serif;
+  --site-font-mono:
+    ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+
+  /* Charcoal, not black: a pure black page leaves glass nothing to bend and flattens every
+     card. Tiles sit one step above it, and the dimmest text keeps 4.5:1 on both. */
+  --site-bg: #1c1c1e;
+  --site-tile: #2c2c2e;
+  --site-text: #f5f5f7;
+  --site-logo: #fff;
+  --site-text-2: #b8b8be;
+  --site-text-3: #a8a8af;
+  --site-link: #78b7ff;
+  --site-hairline: rgb(255 255 255 / 0.12);
+  --site-fill: rgb(255 255 255 / 0.08);
+  --site-fill-strong: rgb(255 255 255 / 0.14);
+  --site-legible-tint: rgb(28 28 30 / 0.62);
+  --site-wallpaper: url('/vermilion-dark.svg');
+  --site-stage: linear-gradient(#333337, #1d1d20);
+  --site-shadow: 0 30px 80px -30px rgb(0 0 0 / 0.8);
+
+  --site-syntax-plain: #f5f5f7;
+  --site-syntax-keyword: #ff9a76;
+  --site-syntax-string: #ff8170;
+  --site-syntax-comment: #aaaab0;
+  --site-syntax-number: #d9c97c;
+  --site-syntax-tag: #5dd8ff;
+  --site-syntax-attr: #ffc3a4;
+}
+
+:root[data-lg-theme='light'] {
+  color-scheme: light;
+
+  --site-bg: #faf9f7;
+  --site-tile: #fff;
+  --site-text: #222224;
+  --site-logo: #000;
+  --site-text-2: #66666a;
+  --site-text-3: #66666a;
+  --site-link: #005ec6;
+  --site-hairline: rgb(0 0 0 / 0.1);
+  --site-fill: rgb(0 0 0 / 0.05);
+  --site-fill-strong: rgb(0 0 0 / 0.08);
+  --site-legible-tint: rgb(255 255 255 / 0.66);
+  --site-wallpaper: url('/vermilion-light.svg');
+  --site-stage: linear-gradient(#fbfbfc, #e2e4e8);
+  --site-shadow: 0 30px 80px -36px rgb(0 0 0 / 0.35);
+
+  --site-syntax-plain: #222224;
+  --site-syntax-keyword: #a5361f;
+  --site-syntax-string: #c41a16;
+  --site-syntax-comment: #707074;
+  --site-syntax-number: #8d5300;
+  --site-syntax-tag: #0b4f79;
+  --site-syntax-attr: #a44122;
+}
+
+/* Under increased contrast the light glass behind copy frosts at least as densely as the
+   library's, so dark text keeps 7:1 over any backdrop. */
+@media (prefers-contrast: more) {
+  :root[data-lg-theme='light'] {
+    --site-legible-tint: rgb(255 255 255 / 0.75);
+  }
+}
+
+/* Theme colours commit together; hover transitions resume as soon as the change is painted. */
+:root[data-site-theme-changing],
+:root[data-site-theme-changing] *,
+:root[data-site-theme-changing] *::before,
+:root[data-site-theme-changing] *::after {
+  transition: none !important;
+}
+
+/* ------------------------------------------------------------------ base */
+
+/* Scrollbars stay thin and quiet: a faint thumb on a clear track. The docs sidebar draws the
+   library's glass scrollbar instead. */
+html {
+  scrollbar-color: color-mix(in srgb, var(--site-text) 22%, transparent) transparent;
+}
+
+html,
+html * {
+  scrollbar-width: thin;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--site-bg);
+  color: var(--site-text);
+  font-family: var(--site-font);
+  font-size: 17px;
+  line-height: 1.47059;
+  letter-spacing: -0.01em;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgb(0 103 217 / 0.3);
+}
+
+/* The header is fixed. A control scrolled into view for focus has to stop below it, not behind
+   (WCAG 2.4.11), so its scroll margin clears it. */
+main :focus {
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 1000;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: #0067d9;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-160%);
+}
+
+.skip-link:focus {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+  outline: 2px solid var(--lg-focus-ring);
+  outline-offset: 3px;
+}
+
+/* Site links only: a global rule would outrank the library's own focus styles. */
+:is(
+  .site-brand,
+  .site-footer a,
+  .home-section-link,
+  .docs-sidebar a,
+  .docs-toc a,
+  .docs-pagination a,
+
+/* ------------------------------------------------------------ GlassPost */
+
+.gp-stage {
+  position: relative;
+  min-height: 100svh;
+  overflow: clip;
+}
+
+.gp-container {
+  width: min(1120px, calc(100% - 40px));
+  margin-inline: auto;
+}
+
+.gp-display {
+  font-family: var(--site-font-display);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+}
+
+.gp-muted {
+  color: var(--site-text-2);
+}
+
+/* 3D phone: pointer-driven tilt on a preserved-3d stack of layers. */
+.gp-3d {
+  perspective: 1400px;
+}
+
+.gp-phone {
+  --rx: 8deg;
+  --ry: -16deg;
+  position: relative;
+  width: min(300px, 70vw);
+  aspect-ratio: 9 / 18.6;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform 220ms var(--lg-spring, ease-out);
+  animation: gp-float 7s ease-in-out infinite;
+}
+
+.gp-phone-body {
+  position: absolute;
+  inset: 0;
+  border-radius: 46px;
+  padding: 10px;
+  background: linear-gradient(145deg, #4a4a50, #1d1d20 55%, #3a3a40);
+  box-shadow:
+    0 60px 90px -30px rgb(0 0 0 / 0.55),
+    inset 0 0 0 1.5px rgb(255 255 255 / 0.18);
+}
+
+.gp-phone-screen {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 37px;
+  background: #fff;
+  color: #222224;
+  font-size: 12px;
+}
+
+.gp-chip {
+  position: absolute;
+  transform: translateZ(var(--z, 60px));
+  animation: gp-float 6s ease-in-out infinite;
+  animation-delay: var(--d, 0s);
+}
+
+@keyframes gp-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gp-phone,
+  .gp-chip {
+    animation: none;
+    transition: none;
+  }
+}
+
+:root[data-lg-reduce-motion='1'] .gp-phone,
+:root[data-lg-reduce-motion='1'] .gp-chip {
+  animation: none;
+  transition: none;
+}
+
+.gp-grid {
+  display: grid;
+  gap: 20px;
+}
+
+@media (min-width: 900px) {
+  .gp-split {
+    grid-template-columns: 420px 1fr;
+    align-items: start;
+  }
+  .gp-hero {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+  .gp-features {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.gp-post {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: 14px;
+  align-items: center;
+}
+
+.gp-thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  object-fit: cover;
+  background: var(--site-fill-strong);
+}
+
+/* Plain-HTML helpers (no framework) */
+.gp-header { position: fixed; top: 14px; left: 50%; transform: translateX(-50%); z-index: 50;
+  width: min(960px, calc(100% - 24px)); display: flex; align-items: center; gap: 18px; padding: 8px 12px 8px 18px; }
+.gp-header a { color: inherit; text-decoration: none; }
+.gp-brand { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 19px; letter-spacing: .012em; }
+.gp-nav { display: flex; gap: 16px; margin-left: auto; font-size: 15px; }
+.gp-field { display: grid; gap: 8px; font-size: 14px; color: var(--lg-muted-foreground); }
+.gp-field label { font-weight: 500; }
+.gp-seg { display: inline-flex; gap: 6px; padding: 4px; }
+.gp-seg button { padding: 8px 18px; border-radius: 99px; border: 0; background: transparent; color: inherit; font: inherit; cursor: pointer; }
+.gp-seg button[aria-pressed='true'] { background: var(--lg-accent); color: #fff; }
+.gp-alert { padding: 12px 14px; border-radius: 14px; font-size: 14px; background: var(--site-fill-strong); }
+.gp-alert[data-tone='danger'] { color: var(--lg-invalid); }
+.gp-drop { position: absolute; border-radius: 50%; animation: gp-float 8s ease-in-out infinite; }
+.gp-legal h2 { margin: 28px 0 8px; font-size: 20px; }
+.gp-legal a { color: var(--site-link); }
+.gp-toggle { width: 38px; height: 38px; border-radius: 50%; border: 0; cursor: pointer; background: var(--site-fill); color: inherit; font-size: 16px; }
+body { background: var(--site-bg) var(--site-wallpaper) center / cover fixed no-repeat; }
