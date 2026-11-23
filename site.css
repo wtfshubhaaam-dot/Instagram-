@@ -1,5 +1,4 @@
 
-
 :root {
   color-scheme: dark;
 
@@ -113,6 +112,9 @@ body {
 /* The header is fixed. A control scrolled into view for focus has to stop below it, not behind
    (WCAG 2.4.11), so its scroll margin clears it. */
 main :focus {
+  scroll-margin-top: 84px;
+}
+
 .skip-link {
   position: fixed;
   top: 12px;
@@ -137,14 +139,11 @@ main :focus {
   outline-offset: 3px;
 }
 
-/* Site links only: a global rule would outrank the library's own focus styles. */
-:is(
-  .site-brand,
-  .site-footer a,
-  .home-section-link,
-  .docs-sidebar a,
-  .docs-toc a,
-  .docs-pagination a,
+
+a:focus-visible, button:focus-visible, .lg-button:focus-visible {
+  outline: 2px solid var(--lg-focus-ring);
+  outline-offset: 2px;
+}
 
 /* ------------------------------------------------------------ GlassPost */
 
@@ -292,3 +291,12 @@ main :focus {
 .gp-toggle { width: 38px; height: 38px; border-radius: 50%; border: 0; cursor: pointer; background: var(--site-fill); color: inherit; font-size: 16px; }
 body { background: var(--site-bg); }
 #scene { position: relative; min-height: 100svh; }
+
+.gp-chip2 { position: absolute; z-index: 2; width: max-content; }
+.gp-drop { animation: none; }
+footer a { color: inherit; text-decoration: none; opacity: .85; }
+footer a:hover { opacity: 1; text-decoration: underline; }
+.gp-container > .gp-hero, .gp-hero { width: 100%; }
+@media (max-width: 899px) {
+  .gp-hero { grid-template-columns: 1fr; }
+}

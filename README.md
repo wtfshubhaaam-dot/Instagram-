@@ -27,6 +27,7 @@ Publishing flow per post: create media container, check its status, publish, sto
 | `glass.css`, `site.css` | Glassy UI stylesheet and site tokens |
 | `vermilion-*.svg` | Wallpapers |
 | `package.json`, `Dockerfile`, `.env.example` | Runtime and deployment |
+| `META-APPROVAL.md` | Meta approval checklist, review text, screencast script and suspension-prevention rules |
 
 ## 2. Prerequisites
 
